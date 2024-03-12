@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "serve": "npx json-server ./server/db.json"
+    "serve": "npx json-server ./server/db.json --port 8000"
   },
   "dependencies": {
     "json-server": "^1.0.0-alpha.23",

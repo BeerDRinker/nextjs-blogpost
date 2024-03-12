@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header className="sticky top-0 z-10 bg-teal-700">
-          <nav className="max-w-4xl mx-auto font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 shadow sm:items-baseline w-full">
+          <nav className="max-w-4xl mx-auto font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 sm:items-baseline w-full">
             <div className="mb-2 sm:mb-0">
               <Link
                 href="/"
@@ -44,7 +44,7 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <div>{children}</div>
+        {children}
       </body>
     </html>
   );
