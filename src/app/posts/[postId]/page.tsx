@@ -6,7 +6,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-export default async function PostPage({
+export default function PostPage({
   params: { postId },
 }: {
   params: { postId: string };
@@ -61,7 +61,7 @@ async function UserInfo({ userId }: { userId: number }) {
   return (
     <div className="text-sm text-gray-500 dark:text-gray-300">
       <p className="mb-1">
-        Name:{" "}
+        Author:{" "}
         <Link
           href={`/users/${userId}`}
           className="mb-1 underline font-bold text-indigo-700"
@@ -69,8 +69,6 @@ async function UserInfo({ userId }: { userId: number }) {
           {user.name}
         </Link>
       </p>
-      <p className="mb-1">Email: {user.email}</p>
-      <p className="mb-1">Website: {user.website}</p>
     </div>
   );
 }
@@ -79,15 +77,7 @@ function UserInfoSuspense() {
   return (
     <div className="text-sm text-gray-500 dark:text-gray-300">
       <div className="flex items-center mb-1 w-1/3  gap-1">
-        <p className="">Name: </p>
-        <p className="skeleton"></p>
-      </div>
-      <div className="flex items-center mb-1 w-1/3  gap-1">
-        <p className="">Email: </p>
-        <p className="skeleton"></p>
-      </div>
-      <div className="flex items-center mb-1 w-1/3  gap-1">
-        <p className="">Website: </p>
+        <p className="">Author: </p>
         <p className="skeleton"></p>
       </div>
     </div>

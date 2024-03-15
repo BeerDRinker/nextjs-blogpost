@@ -1,5 +1,15 @@
 import { baseURL, wait } from "./main";
 
+export async function getUsers() {
+  await wait();
+
+  const response = await fetch(`${baseURL}/users`);
+
+  const users = await response.json();
+
+  return users;
+}
+
 export async function getUser(userId: number) {
   await wait();
 
