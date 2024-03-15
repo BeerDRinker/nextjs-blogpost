@@ -30,7 +30,7 @@ export function UserCard({ user }: { user: User }) {
       <hr className="mb-6" />
       <div className="flex items-end w-full justify-end text-white dark:text-gray-50">
         <Link
-          href={`/users/${user.id}`}
+          href={`users/${user.id}`}
           type="button"
           className="bg-teal-700 px-6 py-4 rounded-lg"
         >

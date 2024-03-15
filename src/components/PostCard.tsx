@@ -10,7 +10,7 @@ export function PostCard({ post }: { post: Post }) {
       <p className=" flex mb-4 text-base">{post.body}</p>
       <div className="flex items-end w-full justify-end text-white dark:text-gray-50">
         <Link
-          href={`/posts/${post.id}`}
+          href={`posts/${post.id}`}
           type="button"
           className="bg-teal-700 px-6 py-4 rounded-lg"
         >

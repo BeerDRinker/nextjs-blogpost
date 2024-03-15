@@ -35,12 +35,12 @@ export default function RootLayout({
               >
                 Posts
               </Link>
-              <a
+              <Link
                 href="/users"
                 className="text-lg no-underline text-gray-100 hover:text-gray-700 sm:ml-4"
               >
                 Users
-              </a>
+              </Link>
             </div>
           </nav>
         </header>
