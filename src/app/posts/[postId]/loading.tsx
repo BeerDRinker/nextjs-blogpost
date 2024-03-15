@@ -1,1 +1,3 @@
-export default function PostLoadingPage() {}
+export default function PostLoadingPage() {
+  return null;
+}
