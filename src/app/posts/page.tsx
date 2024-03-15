@@ -9,7 +9,7 @@ export default async function PostsPage() {
   if (posts == null) return notFound();
 
   return (
-    <div className="mx-auto px-6 mt-6 max-w-4xl">
+    <>
       <div className="my-4 text-2xl">
         <h1>Posts</h1>
       </div>
@@ -18,6 +18,6 @@ export default async function PostsPage() {
           <PostCard key={post.id} post={post} />
         ))}
       </div>
-    </div>
+    </>
   );
 }

@@ -31,3 +31,34 @@ body {
     text-wrap: balance;
   }
 }
+
+.skeleton {
+  background: rgb(209 213 219 / 0.5);
+  border-radius: 0.5rem;
+  height: 1em;
+  width: 100%;
+  animation: skeleton 1s infinite alternate ease-in-out;
+}
+
+.skeleton + .skeleton:last-child {
+  width: 75%;
+}
+
+.skeleton + .skeleton {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.skeleton-btn {
+  height: 2em;
+  width: 4em;
+}
+
+@keyframes skeleton {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
