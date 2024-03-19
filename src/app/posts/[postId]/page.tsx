@@ -33,17 +33,17 @@ async function Post({ postId }: { postId: string }) {
 
   return (
     <>
-      <div className="relative flex flex-col flex-shrink-0 w-full px-4 py-8 bg-white border border-gray-300 rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <h1 className="antialiased text-2xl dark:text-gray-50 mb-4">
+      <div className="relative flex w-full flex-shrink-0 flex-col rounded-md border border-gray-300 bg-white px-4 py-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+        <h1 className="mb-4 text-2xl antialiased dark:text-gray-50">
           {post.title}
         </h1>
         <div className="flex flex-col gap-4">
-          <p className="pt-2 leading-1 text-slate-500 dark:text-gray-300/90">
+          <p className="leading-1 pt-2 text-slate-500 dark:text-gray-300/90">
             {post.body}
           </p>
         </div>
 
-        <div className="flex flex-col mt-4">
+        <div className="mt-4 flex flex-col">
           <Suspense fallback={<UserInfoSuspense />}>
             <UserInfo userId={post.userId} />
           </Suspense>
@@ -64,7 +64,7 @@ async function UserInfo({ userId }: { userId: number }) {
         Author:{" "}
         <Link
           href={`/users/${userId}`}
-          className="mb-1 underline font-bold text-indigo-700"
+          className="mb-1 font-bold text-indigo-700 underline"
         >
           {user.name}
         </Link>
@@ -76,7 +76,7 @@ async function UserInfo({ userId }: { userId: number }) {
 function UserInfoSuspense() {
   return (
     <div className="text-sm text-gray-500 dark:text-gray-300">
-      <div className="flex items-center mb-1 w-1/3  gap-1">
+      <div className="mb-1 flex w-1/3 items-center  gap-1">
         <p className="">Author: </p>
         <p className="skeleton"></p>
       </div>
@@ -87,10 +87,10 @@ function UserInfoSuspense() {
 function PostFallback() {
   return (
     <>
-      <div className="relative flex flex-col flex-shrink-0 w-full px-4 py-8 bg-white border border-gray-300 rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <h1 className="antialiased text-2xl dark:text-gray-50 mb-4 skeleton"></h1>
+      <div className="relative flex w-full flex-shrink-0 flex-col rounded-md border border-gray-300 bg-white px-4 py-8 shadow-md dark:border-gray-700 dark:bg-gray-800">
+        <h1 className="skeleton mb-4 text-2xl antialiased dark:text-gray-50"></h1>
         <div className="flex flex-col gap-4">
-          <p className="pt-2 text-sm leading-1 text-slate-500 dark:text-gray-300/90 skeleton"></p>
+          <p className="leading-1 skeleton pt-2 text-sm text-slate-500 dark:text-gray-300/90"></p>
         </div>
       </div>
     </>
@@ -99,6 +99,10 @@ function PostFallback() {
 
 async function CommentsList({ postId }: { postId: string }) {
   const comments = await getPostComments(postId);
+
+  if (comments.length === 0) {
+    return <p>There is no comments to this post yet...</p>;
+  }
 
   return (
     <div>
@@ -111,10 +115,10 @@ async function CommentsList({ postId }: { postId: string }) {
 
 function Comment({ comment }: { comment: Comment }) {
   return (
-    <article className="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
-      <footer className="flex justify-between items-center mb-4">
+    <article className="mb-6 rounded-lg bg-white p-6 text-base dark:bg-gray-900">
+      <footer className="mb-4 flex items-center justify-between">
         <div className="flex flex-col items-start">
-          <p className="text-gray-600 dark:text-gray-300 mb-2">
+          <p className="mb-2 text-gray-600 dark:text-gray-300">
             {comment.name}
           </p>
           <p className="text-sm text-gray-600 dark:text-gray-500">
@@ -133,15 +137,15 @@ function CommentsListFallback() {
       {Array.from({ length: 4 }).map((_, i) => (
         <article
           key={i}
-          className="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900"
+          className="mb-6 rounded-lg bg-white p-6 text-base dark:bg-gray-900"
         >
           <footer className="mb-4 w-1/2">
             <div className="flex flex-col items-start">
-              <p className="text-gray-600 dark:text-gray-300 mb-2 skeleton"></p>
-              <p className="text-sm text-gray-600 dark:text-gray-500 skeleton"></p>
+              <p className="skeleton mb-2 text-gray-600 dark:text-gray-300"></p>
+              <p className="skeleton text-sm text-gray-600 dark:text-gray-500"></p>
             </div>
           </footer>
-          <p className="text-gray-500 dark:text-gray-400 skeleton"></p>
+          <p className="skeleton text-gray-500 dark:text-gray-400"></p>
         </article>
       ))}
     </>
