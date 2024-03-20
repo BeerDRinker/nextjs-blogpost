@@ -44,14 +44,19 @@ body {
   width: 75%;
 }
 
-.skeleton + .skeleton {
-  margin-top: 0.5rem;
-  width: 100%;
+.skeleton-btn {
+  height: auto;
+  width: auto;
+  pointer-events: none;
 }
 
-.skeleton-btn {
-  height: 2em;
-  width: 4em;
+.skeleton-btn + .skeleton:last-child {
+  width: auto;
+}
+
+.skeleton-input {
+  height: auto;
+  pointer-events: none;
 }
 
 @keyframes skeleton {

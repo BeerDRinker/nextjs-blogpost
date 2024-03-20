@@ -1,6 +1,5 @@
 import { PostForm } from "@/components/PostForm";
 import { UserSelectOptions } from "@/components/UserSelectOptions";
-import Link from "next/link";
 
 export default function NewPostPage() {
   return (
