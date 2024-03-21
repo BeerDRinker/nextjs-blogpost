@@ -12,13 +12,23 @@ export async function getPosts() {
 }
 
 export async function getPost(postId: string) {
-  await wait(1500);
+  await wait();
 
   const response = await fetch(`${baseURL}/posts/${postId}`);
 
   const post = await response.json();
 
   return post;
+}
+
+export async function getUserPosts(userId: number | string) {
+  await wait(3000);
+
+  const response = await fetch(`${baseURL}/posts?userId=${userId}`);
+
+  const posts = await response.json();
+
+  return posts;
 }
 
 export async function createPost({

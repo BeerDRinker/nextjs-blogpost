@@ -10,7 +10,7 @@ export async function getUsers() {
   return users;
 }
 
-export async function getUser(userId: number) {
+export async function getUser(userId: number | string) {
   await wait();
 
   const response = await fetch(`${baseURL}/users?id=${userId}`);
