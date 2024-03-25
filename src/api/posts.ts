@@ -72,3 +72,13 @@ export async function editPost(
 
   return post;
 }
+
+export async function deletePost(postId: string) {
+  await wait(1000);
+  const response = await fetch(`${baseURL}/posts/${postId}`, {
+    method: "DELETE",
+  });
+  const post = await response.json();
+
+  return post;
+}

@@ -1,6 +1,7 @@
 "use server";
 
-import { createPost, editPost } from "@/api/posts";
+import { createPost, deletePost, editPost } from "@/api/posts";
+import { Post } from "@/types/main";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -29,6 +30,15 @@ export async function editPostAction(
   revalidatePath(`/posts/${post.id}`);
   revalidatePath(`/users/${post.userId}`);
   redirect(`/posts/${post.id}`);
+}
+
+export async function deletePostAction(postId: string) {
+  const post: Post = await deletePost(postId);
+
+  revalidatePath("/posts");
+  revalidatePath(`/posts/${postId}`);
+  revalidatePath(`/users/${post.userId}`);
+  redirect("/posts");
 }
 
 function validatePost(formData: FormData) {

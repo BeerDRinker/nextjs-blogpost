@@ -1,6 +1,7 @@
 import { getPostComments } from "@/api/comments";
 import { getPost } from "@/api/posts";
 import { getUser } from "@/api/users";
+import DeleteButton from "@/components/DeleteButton";
 import { Comment } from "@/types/main";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -54,9 +55,7 @@ async function Post({ postId }: { postId: string }) {
             >
               Edit
             </Link>
-            <button className="rounded-lg bg-red-700 px-6 py-1 text-xl">
-              Delete
-            </button>
+            <DeleteButton postId={postId} />
           </div>
         </div>
       </div>
