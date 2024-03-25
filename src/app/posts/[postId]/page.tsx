@@ -49,14 +49,6 @@ async function Post({ postId }: { postId: string }) {
             <UserInfo userId={post.userId} />
           </Suspense>
           <PostButtons postId={postId} />
-          {/* <div className="mt-3 flex flex-row flex-nowrap gap-2 sm:mt-0">
-            <Link
-              href={`${postId}/edit`}
-              className="rounded-lg bg-teal-700 px-6 py-1 text-xl"
-            >
-              Edit
-            </Link>
-          </div> */}
         </div>
       </div>
     </>
