@@ -40,6 +40,7 @@ export async function createPost({
   body: string;
   userId: number;
 }) {
+  await wait(2000);
   const response = await fetch(`${baseURL}/posts`, {
     method: "POST",
     headers: {
@@ -51,4 +52,23 @@ export async function createPost({
   const post = await response.json();
 
   return post as Post;
+}
+
+export async function editPost(
+  postId: string | number,
+  data: { title: string; body: string; userId: number },
+) {
+  await wait(2000);
+  const { title, body, userId } = data;
+  const response = await fetch(`${baseURL}/posts/${postId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title, body, userId }),
+  });
+
+  const post = await response.json();
+
+  return post;
 }

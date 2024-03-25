@@ -1,6 +1,6 @@
 "use server";
 
-import { createPost } from "@/api/posts";
+import { createPost, editPost } from "@/api/posts";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -11,6 +11,22 @@ export async function createPostAction(prevState: unknown, formData: FormData) {
   const post = await createPost(data);
 
   revalidatePath("/posts");
+  revalidatePath(`/users/${post.userId}`);
+  redirect(`/posts/${post.id}`);
+}
+
+export async function editPostAction(
+  postId: string | number,
+  prevState: unknown,
+  formData: FormData,
+) {
+  const [data, errors] = validatePost(formData);
+  if (data == null) return errors;
+
+  const post = await editPost(postId, data);
+
+  revalidatePath("/posts");
+  revalidatePath(`/posts/${post.id}`);
   revalidatePath(`/users/${post.userId}`);
   redirect(`/posts/${post.id}`);
 }

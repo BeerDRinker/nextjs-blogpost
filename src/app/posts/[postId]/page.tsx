@@ -43,10 +43,21 @@ async function Post({ postId }: { postId: string }) {
           </p>
         </div>
 
-        <div className="mt-4 flex flex-col">
+        <div className="mt-4 flex flex-col flex-nowrap justify-between sm:flex-row">
           <Suspense fallback={<UserInfoSuspense />}>
             <UserInfo userId={post.userId} />
           </Suspense>
+          <div className="mt-3 flex flex-row flex-nowrap gap-2 sm:mt-0">
+            <Link
+              href={`${postId}/edit`}
+              className="rounded-lg bg-teal-700 px-6 py-1 text-xl"
+            >
+              Edit
+            </Link>
+            <button className="rounded-lg bg-red-700 px-6 py-1 text-xl">
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </>
