@@ -16,6 +16,10 @@ export async function getPost(postId: string) {
 
   const response = await fetch(`${baseURL}/posts/${postId}`);
 
+  if (response.status === 404) {
+    return null;
+  }
+
   const post = await response.json();
 
   return post;

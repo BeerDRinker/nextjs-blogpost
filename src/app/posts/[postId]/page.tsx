@@ -1,7 +1,7 @@
 import { getPostComments } from "@/api/comments";
 import { getPost } from "@/api/posts";
 import { getUser } from "@/api/users";
-import DeleteButton from "@/components/DeleteButton";
+import PostButtons from "@/components/PostButtons";
 import { Comment } from "@/types/main";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -48,15 +48,15 @@ async function Post({ postId }: { postId: string }) {
           <Suspense fallback={<UserInfoSuspense />}>
             <UserInfo userId={post.userId} />
           </Suspense>
-          <div className="mt-3 flex flex-row flex-nowrap gap-2 sm:mt-0">
+          <PostButtons postId={postId} />
+          {/* <div className="mt-3 flex flex-row flex-nowrap gap-2 sm:mt-0">
             <Link
               href={`${postId}/edit`}
               className="rounded-lg bg-teal-700 px-6 py-1 text-xl"
             >
               Edit
             </Link>
-            <DeleteButton postId={postId} />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
