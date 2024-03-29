@@ -67,3 +67,8 @@ body {
     opacity: 1;
   }
 }
+
+#modal-dialog[open]::backdrop {
+  background: #000;
+  opacity: 0.5;
+}
