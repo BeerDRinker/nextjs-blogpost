@@ -1,10 +1,11 @@
 import { Post } from "@/types/main";
 import { baseURL, wait } from "./main";
 
-export async function getPosts() {
+export async function getPosts(page: string | number, perPage?: string) {
   await wait();
-
-  const response = await fetch(`${baseURL}/posts`);
+  const response = await fetch(
+    `${baseURL}/posts?_page=${page} ${perPage ? `&_per_page=${perPage}` : ""}`,
+  );
 
   const posts = await response.json();
 
